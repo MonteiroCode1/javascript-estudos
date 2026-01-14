@@ -3,6 +3,7 @@ const respErros = document.querySelector("#outErros");
 const respChances = document.querySelector("#outChances");
 const respDica = document.querySelector("#outDica");
 
+// variaveis Globais
 const erros = [];
 const sorteado = Math.floor(Math.random() * 100) + 1;
 const chances = 6;
@@ -43,3 +44,6 @@ frm.addEventListener("submit", (e) => {
     frm.inNumero.value = "";
     frm.inNumero.focus();
 });
+frm.btNovo.addEventListener("click", () => {
+    location.reload() //recarregar a pagina
+})
