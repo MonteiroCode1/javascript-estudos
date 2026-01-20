@@ -6,8 +6,8 @@ const prompt = require("prompt-sync")();
 const list =[2, 3, 5, 7, 8, 9, 12];
 const pares = list.filter(temp => temp % 2 == 1);
 
-console.log(pares)
+console.log(pares);
 
 const aux = {nome: "Guilherme", idade: 20};
 
-console.log(aux.nome)
+console.log(aux.nome);
