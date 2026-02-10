@@ -2,8 +2,7 @@ const prompt = require("prompt-sync")();
 
 // sistema de saques de um banco
 
-const saque_valido = [];
-const saque_invalido = [];
+const saques = [];
 
 do {
     const saque = Number(prompt("saque: "));
@@ -14,19 +13,20 @@ do {
     //verificaçao, se é um valor valido
     if (saque % 10 == 0) {
         console.log("Saque Valido!...");
-        saque_valido.push(saque);
+        saques.push(saque);
     } else {
         console.log("Saque Invalido!...");
-        saque_invalido.push(saque);
+        saques.push(saque);
     }
 
 } while (true)
 
 console.log(`\nSaques Validos\n${"-".repeat(40)}\n`);
-for (const element of saque_valido) {
-    console.log(element);
+const saques_validos = saques.filter(elemento => elemento % 10 == 0);
+soma = saques_validos.reduce((acumulador, elemento) => acumulador + elemento, 0);
+for (const e of saques_validos) {
+    console.log(e.toFixed(2));
 }
-soma = saque_valido.reduce((acumulador, elemento) => acumulador + elemento, 0);
-console.log(`Total dos Saques: R$ ${soma}\n`);
+console.log(`Total dos Saques: R$ ${soma.toFixed(2)}\n`);
 
-console.log(`Numero de Tentativas de saques (Saques Invalidos): ${saque_invalido.length}`);
+console.log(`Numero de Tentativas de saques (Saques Invalidos): ${saques.length - saques_validos.length}`);
