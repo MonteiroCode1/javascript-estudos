@@ -23,7 +23,7 @@ do {
 
 console.log(`\nSaques Validos\n${"-".repeat(40)}\n`);
 const saques_validos = saques.filter(elemento => elemento % 10 == 0);
-soma = saques_validos.reduce((acumulador, elemento) => acumulador + elemento, 0);
+const soma = saques_validos.reduce((acumulador, elemento) => acumulador + elemento, 0);
 for (const e of saques_validos) {
     console.log(e.toFixed(2));
 }
