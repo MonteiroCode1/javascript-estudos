@@ -6,11 +6,12 @@ const resp2 = document.querySelector("#resp2");
 const numeros = [];
 
 // verificar um evento no botao submit
-frm.addEventListener("submit", (e) => {
-    e.preventDefaut();
+frm.addEventListener("submit", (x) => {
+    x.preventDefault();
     const valor = Number(frm.inNumero.value);
     if (numeros.length == 0) {
         numeros.push(valor);
+        resp1.innerText= `Numeros: ${numeros.join(", ")}`;
     } else {
         let r = false;
         for (const e of numeros) {
