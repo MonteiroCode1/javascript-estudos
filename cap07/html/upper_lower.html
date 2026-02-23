@@ -1,0 +1,14 @@
+<script>
+    const palavra = prompt("Palavra: "); //maça
+    const tam = palavra.length // 4
+
+    //inverso inicia com a ultema letra em maiuscula
+    let inverso = palavra.charAt(tam - 1).toUpperCase();
+
+    for (let i = tam-2; i>=0; i--){
+        inverso += palavra.charAt(i).toLowerCase();
+    }
+    alert(`a palavra: ${palavra}\nInvertida: ${inverso}`);
+
+
+</script>
