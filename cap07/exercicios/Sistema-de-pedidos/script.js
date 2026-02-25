@@ -1,6 +1,3 @@
-const frm = document.querySelector("form");
-const resp = document.querySelector("pre");
-
 const pedidos = [
   {
     cliente: "Ana",
@@ -24,13 +21,26 @@ const pedidos = [
   }
 ];
 
-frm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let = soma = 0;
-    let exibir = ``;
-    const total = pedidos.length - 1;
-    do {
 
-        
-    } while(total > 0)
+// Mostra o Total de Cada Pedido.
+let x = 0;
+do {
+  const nome = pedidos[x].cliente;
+  const produtos = pedidos[x].itens;
+  let soma = 0
+  for(const elemento of produtos) {
+    const {preco, qtd} = elemento;
+    soma += preco * qtd;
+  }
+  console.log(`${nome}: R$${soma}`);
+  x++;
+} while(x < pedidos.length)
+
+
+// Mostrar o Cliente Que Mais Gastou!.
+
+const MaisGastou = pedidos.filter(elemento => {
+  
 })
+
+
