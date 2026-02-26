@@ -24,6 +24,7 @@ const pedidos = [
 
 // Mostra o Total de Cada Pedido.
 let x = 0;
+let TotalDeCadaUm = [];
 do {
   const nome = pedidos[x].cliente;
   const produtos = pedidos[x].itens;
@@ -32,6 +33,7 @@ do {
     const {preco, qtd} = elemento;
     soma += preco * qtd;
   }
+  TotalDeCadaUm.push({nome, soma});
   console.log(`${nome}: R$${soma}`);
   x++;
 } while(x < pedidos.length)
@@ -39,8 +41,6 @@ do {
 
 // Mostrar o Cliente Que Mais Gastou!.
 
-const MaisGastou = pedidos.filter(elemento => {
-  
-})
-
-
+const maior = TotalDeCadaUm.reduce((acumulador, elemento) => Math.max(acumulador, elemento.soma), 0);
+const GastouMais = TotalDeCadaUm.filter(elemento => elemento.soma == maior);
+console.log(GastouMais);
