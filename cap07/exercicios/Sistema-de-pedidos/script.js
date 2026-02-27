@@ -43,4 +43,4 @@ do {
 
 const maior = TotalDeCadaUm.reduce((acumulador, elemento) => Math.max(acumulador, elemento.soma), 0);
 const GastouMais = TotalDeCadaUm.filter(elemento => elemento.soma == maior);
-console.log(GastouMais);
+console.log(`\nCliente que mais Gastou: ${GastouMais[0].nome}.`)
