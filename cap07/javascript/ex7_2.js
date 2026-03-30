@@ -7,7 +7,7 @@ frm.addEventListener("submit", (e) => {
     const fruta = frm.inFruta.value.toUpperCase() // torna string em maiusculo!
     let resposta = "";
 
-    for (letra of fruta) {
+    for (const letra of fruta) {
         if (letra == fruta.charAt(0)) {
             resposta += letra;
         } else {
