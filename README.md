@@ -10,6 +10,7 @@ Repositório com meus estudos de JavaScript baseados em livros e cursos.
 - cap05 - Repetições
 - cap06 - Vetores e Objetos
 - cap07 - strings e datas
+- cap08 - funções e eventos
 
 ## 🚀 Objetivo
 Aprofundar lógica de programação e desenvolvimento web com JavaScript.
