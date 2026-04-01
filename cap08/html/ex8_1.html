@@ -1,0 +1,10 @@
+<script>
+    const situacao = (nota, media) => { // parametros
+        const resultado = nota >= media ? 'Aprovado' : 'Reprovado';
+        return resultado;
+    }
+
+    const nota1 = Number(prompt("Qual Nota: "));
+
+    situacao(nota1, 7); // argumento   
+</script>
