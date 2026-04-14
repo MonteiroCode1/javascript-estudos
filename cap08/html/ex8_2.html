@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Exemplo 8.2</title>
+</head>
+<body>
+    <img src="https://st2.depositphotos.com/2890953/8310/i/450/depositphotos_83109958-stock-photo-product-sales-online-illustration.jpg" alt="Em 10x" class="normal">
+    <h1>Revenda avenida - promoção</h1>
+    <form>
+        <p>Modelo do Veiculo:
+            <input type="text" id="inModelo" required autofocus>
+        </p>
+        <p>Ano de Fabricação:
+            <input type="number" id="inAno" required>
+        </p>
+        <p>Preço:
+            <input type="number" id="inPreço" min="0" step="0.01" required>
+        </p>
+        <input type="submit" value="Classificar - Calcular entradas e Parcelas">
+    </form>
+    <h3 id="outResp1"></h3>
+    <h3 id="outResp2"></h3>
+    <h3 id="outResp3"></h3>
+    <script src="../script/ex8_2.js"></script>
+</body>
+</html>
