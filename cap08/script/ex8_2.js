@@ -17,6 +17,17 @@ function classificarVeiculo(ano) {
     return classif;
 }
 
+function calcularEntrada(preço, classificação) {
+    let valor
+    if (classificação == 'Novo') {
+        valor = (preço / 2) 
+    } else {
+        valor = (preço * 0.3)
+    }
+
+    return valor;
+}
+
 
 
 frm.addEventListener('submit', (e) => {
@@ -26,8 +37,8 @@ frm.addEventListener('submit', (e) => {
     const AnoFabricado = Number(frm.inAno.value);
     const preco = Number(frm.inPreço.value);
 
-    const classificaçao = classificarVeiculo(ano);
-    const entrada = calcularEntrada(preço, classificaçao);
+    const classificaçao = classificarVeiculo(AnoFabricado);
+    const entrada = calcularEntrada(preco, classificaçao);
     const parcela = (preco - entrada) / 10; // usa o retorno da função para cálculo.
 
     resp1.innerText = modelo + '-' + classificaçao;
