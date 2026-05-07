@@ -6,12 +6,12 @@ const itens = [];
 frm.rbPizza.addEventListener('click', () => {
     frm.inBebida.className = 'oculto'; // oculta o select da bebida
     frm.inPizza.className = 'exibe'; // exibe o select das pizzas
-})
+});
 
 frm.rbBebida.addEventListener('click', () => {
     frm.inPizza.className = 'oculto'; // oculta a seleção de pizzas
     frm.inBebida.className = 'exibe'; // exibe a seleção de bebidas
-})
+});
 
 frm.inDetalhes.addEventListener('focus', () => { // quando o campo recebe foco
     if (frm.rbPizza.checked) { // se radiobutton rbPizza tiver Marcado
@@ -24,8 +24,8 @@ frm.inDetalhes.addEventListener('focus', () => { // quando o campo recebe foco
 
     frm.inDetalhes.addEventListener('blur', () => { // quando o campo perdo o foco
         frm.inDetalhes.placeholder = "";  // limpa a dica de preenchimento
-    })
-})
+    });
+});
 
 frm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ frm.addEventListener('submit', (e) => {
         const num = frm.inPizza.selectdIndex; // obtem o n do item selecionado
         produto = frm.inBebida.options[num].text; // texto do item selecionado
     } else {
-        const num = frm.inBebida.selectdIndex
+        const num = frm.inBebida.selectdIndex;
         produto = frm.inBebida.options[num].text;
 
     }
@@ -44,5 +44,5 @@ frm.addEventListener('submit', (e) => {
     resp.innerText = itens.join('\n');
 
     frm.reset(); // limpa o form
-    frm.rbPizza.dispatchEvent(new Event('click')) // dispara o click em rbPizza
-})
+    frm.rbPizza.dispatchEvent(new Event('click')); // dispara o click em rbPizza
+});

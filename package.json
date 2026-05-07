@@ -1,0 +1,25 @@
+{
+  "name": "javascript-estudos",
+  "version": "1.0.0",
+  "description": "Repositório com meus estudos de JavaScript baseados em livros e cursos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MonteiroCode1/javascript-estudos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MonteiroCode1/javascript-estudos/issues"
+  },
+  "homepage": "https://github.com/MonteiroCode1/javascript-estudos#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.3.0",
+    "globals": "^17.6.0"
+  }
+}
