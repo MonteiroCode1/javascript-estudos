@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testando radio button</title>
+</head>
+<body>
+    <h1>Veterinaria Avenida</h1>
+    <hr>
+    <form action="">
+        <p>Valor da Vacina: <input type="number" id="inPreco" min="0" step="0.01" required></p>
+        <p>Possui Convenio:
+            <input type="radio" name="confirma" id="rdSim"> Sim
+            <input type="radio" name="confirma" id="rdNao"> Não
+        </p>
+        <p class="selecao">Convênio:
+            <select id="inConvenio">
+                <option value="amigo dos animais">amigo dos animais</option>
+                <option value="saude animal">saude animal</option>
+            </select>
+        </p>
+        <p><input type="submit" value="Calcular Desconto"></p>
+    </form>
+    <h3 id="resp1"></h3>
+    <h3 id="resp2"></h3>
+    <script src="script.js"></script>
+</body>
+</html>
