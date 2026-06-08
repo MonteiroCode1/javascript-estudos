@@ -11,6 +11,7 @@ Repositório com meus estudos de JavaScript baseados em livros e cursos.
 - cap06 - Vetores e Objetos
 - cap07 - strings e datas
 - cap08 - funções e eventos
+- cap09 - Persistência de dados com localStorage
 
 ## 🚀 Objetivo
 Aprofundar lógica de programação e desenvolvimento web com JavaScript.
