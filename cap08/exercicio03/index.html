@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testando radio button</title>
+    <style>
+        .ocultar {
+            display: none;
+        }
+        .exibir {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <h1>Veterinaria Avenida</h1>
@@ -14,8 +22,8 @@
             <input type="radio" name="confirma" id="rdSim"> Sim
             <input type="radio" name="confirma" id="rdNao"> Não
         </p>
-        <p class="selecao">Convênio:
-            <select id="inConvenio">
+        <p>Convênio:
+            <select id="inConvenio" class="ocultar">
                 <option value="amigo dos animais">amigo dos animais</option>
                 <option value="saude animal">saude animal</option>
             </select>

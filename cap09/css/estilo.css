@@ -1,0 +1,18 @@
+pre {
+    font-size: 1.2em;
+}
+
+.cores-brasil {
+    color: black;
+    background-color: red;
+}
+
+.cores-pelotas {
+    color: blue;
+    background-color: yellow;
+}
+
+.cores-farroupilha {
+    color: green;
+    background-color: white;
+}
