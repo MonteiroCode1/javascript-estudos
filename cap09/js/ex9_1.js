@@ -1,48 +1,49 @@
 const frm = document.querySelector("form");
 const include = document.querySelector("#ingClube");
 const dvTitulo = document.querySelector("#divTitulo");
+const imClube = document.querySelector("#imClube"); // Selecionando a imagem corretamente
 
 const trocarClube = () => {
-    let clube; // variavel que vai receber o nome do clube
+    let clube; 
 
-    if (frm.rbBrasil.checked) { // verifica qual radio button está selecionado
+    if (frm.rbBrasil.checked) { 
         clube = "brasil";
     } else if (frm.rbPelotas.checked) {
         clube = "pelotas";
     } else {
         clube = "farroupilha";
     }
-
-    // define as classes de dvtitulo: row e cores do clube
     
     dvTitulo.className = `row cores-${clube}`;
 
-    //modifica a imagem de acordo com a seleção do cliente
-    imClube.src = `img/${clube.toLowerCase()}.png`;
-    imClube.className = "img-fluid"; // muda o estilo
-    imClube.alt = `Simbolo do ${clube}`; // modifica o atributo alt
+    if (imClube) { // Garante que o elemento existe antes de mudar as propriedades
+        imClube.src = `img/${clube}.png`;
+        imClube.className = "img-fluid"; 
+        imClube.alt = `Simbolo do ${clube}`; 
+    }
 
-    localStorage.setItem("clube", clube) // salva no navegador
+    localStorage.setItem("clube", clube); 
 };
 
 const verificarClube = () => {
-    if (localStorage.getItem("clube")) {
-        const clube = localStorage.getItem("clube");
-    }
+    // Corrigido o escopo: pegamos o valor diretamente
+    const clube = localStorage.getItem("clube");
 
-    if (clube == "Brasil") {
-        frm.rbBrasil.checked = true;
-    } else if (clube == "pelotas") {
-        frm.rbPelotas.checked = true;
-    } else {
-        frm.rbFarroupilha.checked = true;
+    if (clube) { // Se existir algo salvo no localStorage
+        if (clube === "brasil") { // Ajustado para minúsculo, igual ao que foi salvo
+            frm.rbBrasil.checked = true;
+        } else if (clube === "pelotas") {
+            frm.rbPelotas.checked = true;
+        } else if (clube === "farroupilha") {
+            frm.rbFarroupilha.checked = true;
+        }
+        trocarClube(); // Atualiza a tela com o clube que estava salvo
     }
-    trocarClube(); // chama a function que troca imagems
 };
 
 window.addEventListener("load", verificarClube);
 
-// associa ao Evento change de cada botão do form a função TrocarClube
+// Eventos associados corretamente
 frm.rbBrasil.addEventListener("change", trocarClube);
 frm.rbPelotas.addEventListener("change", trocarClube);
-frm.rbFarroupilha.addEventListener("chage", trocarClube);
+frm.rbFarroupilha.addEventListener("change", trocarClube); // Corrigido para "change"

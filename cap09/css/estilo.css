@@ -13,6 +13,10 @@ pre {
 }
 
 .cores-farroupilha {
-    color: green;
-    background-color: white;
+    color: rgb(29, 189, 14);
+    background-color: rgb(255, 255, 255);
+}
+
+body {
+    background-color: rgb(209, 6, 118);
 }
