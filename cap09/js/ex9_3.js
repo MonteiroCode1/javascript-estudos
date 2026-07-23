@@ -7,6 +7,16 @@ frm.addEventListener('submit', (e) => {
     const nome = frm.inNome.value;
     const peso = Number(frm.inPeso.value);
 
+    const verApostaExiste = (peso) => {
+        if (localStorage.getItem("melanciaPeso")) {
+            const pesos = localStorage.getItem("melanciaPeso").split(";");
+            return pesos.includes(peso.toString());
+        }
+        else {
+            return false;
+        }
+    };
+
     //chama a função que verifica se peso ja foi apostado
     if (verApostaExiste(peso)) {
         alert("Alguem já apostou este peso, informe outro...");
@@ -17,7 +27,7 @@ frm.addEventListener('submit', (e) => {
     if (localStorage.getItem("melanciaNome")) {
         //obtem o conteudo ja salvo
         const melanciaNome = localStorage.getItem("melanciaNome") + ";" + nome;
-        const melanciaPeso = localStorage.getItem("melaciaPeso") + ";" + peso;
+        const melanciaPeso = localStorage.getItem("melanciaPeso") + ";" + peso;
         localStorage.setItem("melanciaNome", melanciaNome); // salva os dados
         localStorage.setItem("melanciaPeso", melanciaPeso);
     } else {
