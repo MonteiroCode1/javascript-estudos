@@ -19,8 +19,8 @@ const mostrarApostas = () => {
 
     // armazenando os valores salvos no localstore em variaveis usando o
     // split para criar elementos de vetor a cada ;
-    const nome = localStorage.getItem("melanciaNome").split();
-    const peso = localStorage.getItem("melanciaPeso").split();
+    const nome = localStorage.getItem("melanciaNome").split(";");
+    const peso = localStorage.getItem("melanciaPeso").split(";");
 
     let linhas = "";
 
@@ -38,6 +38,35 @@ frm.btVencedor.addEventListener("click", () => {
         alert("Não há valores armazenados!");
         return;
     }
+
+    const pesoCorreto = Number(prompt("Qual o peso correto da melancia?: "));
+
+    if (pesoCorreto == 0 || isNaN(pesoCorreto)) {
+        return; // quando se usa o return nao executa os comandos de baixo.
+    }
+
+    const nomes = localStorage.getItem('melanciaNome').split(";");
+    const pesos = localStorage.getItem('melanciaPeso').split(";");
+
+    let vencedorNome = nomes[0];
+    let vencedorPeso = Number(pesos[0]);
+
+    for (let i = 1; i < nomes.length; i++) {
+        const difVencedor = Math.abs(vencedorPeso - pesoCorreto);
+        const difAposta = Math.abs(Number(pesos[i]) - pesoCorreto);
+
+        if (difAposta < difVencedor) {
+            vencedorNome = nomes[i];
+            vencedorPeso = Number(pesos[i]);
+        }
+    }
+    let mensagem = "Resultado - peso Correto: " + pesoCorreto + "gr";
+    mensagem += `\n${"-".repeat(36)}`;
+    mensagem += `\nVencedor: ${vencedorNome}`;
+    mensagem += `\nAposta: ${vencedorPeso} gr`;
+    alert(mensagem);
+
+
 });
 
 frm.addEventListener('submit', (e) => {
