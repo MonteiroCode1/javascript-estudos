@@ -1,4 +1,5 @@
 const frm = document.querySelector("form");
+const paragrafo = document.querySelector("#contador");
 const include = document.querySelector("#ingClube");
 const dvTitulo = document.querySelector("#divTitulo");
 const imClube = document.querySelector("#imClube"); // Selecionando a imagem corretamente
@@ -25,6 +26,21 @@ const trocarClube = () => {
     localStorage.setItem("clube", clube); 
 };
 
+const contadorVisitas = () => {
+    // primeiro pega os valores armazenados
+    let visitas = localStorage.getItem("visitas");
+
+    if (!visitas) {
+        visitas = 1;
+    } else {
+        visitas = Number(visitas) + 1;
+    }
+
+    localStorage.setItem('visitas', visitas);
+    paragrafo.innerText = `você ja visitou esse site ${visitas} vezes!`;
+};
+window.addEventListener("load", contadorVisitas);
+
 const verificarClube = () => {
     // Corrigido o escopo: pegamos o valor diretamente
     const clube = localStorage.getItem("clube");
@@ -46,4 +62,4 @@ window.addEventListener("load", verificarClube);
 // Eventos associados corretamente
 frm.rbBrasil.addEventListener("change", trocarClube);
 frm.rbPelotas.addEventListener("change", trocarClube);
-frm.rbFarroupilha.addEventListener("change", trocarClube); // Corrigido para "change"
+frm.rbFarroupilha.addEventListener("change", trocarClube);
