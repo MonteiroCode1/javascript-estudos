@@ -1,6 +1,6 @@
 const frm = document.querySelector("form");
 const paragrafo = document.querySelector("#contador");
-const include = document.querySelector("#ingClube");
+//const include = document.querySelector("#ingClube");
 const dvTitulo = document.querySelector("#divTitulo");
 const imClube = document.querySelector("#imClube"); // Selecionando a imagem corretamente
 
