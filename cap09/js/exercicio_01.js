@@ -16,7 +16,25 @@ function cadastrarCompras(compras) {
     }
 }
 
+// função que exibe em ordem alfabetica!
+function ordemAlfabetica() {
+    if (localStorage.getItem('produtos')) {
+        const compras = localStorage.getItem('produtos').split(";").sort().join("\n");
+        resp.innerText = `Produtos adicionados \n${"-".repeat(20)}\n${compras}`;
+    }
+}
+
+
 frm.addEventListener('submit', (e) => {
     e.preventDefault();
+    // pegar os valor
+    const produto = frm.inProduto.value;
+    cadastrarCompras(produto);
+    ordemAlfabetica();
 
+    //limpar o campo e focar nele novamente
+    frm.inProduto.value = "";
+    frm.inProduto.focus();
 });
+
+window.addEventListener("load", ordemAlfabetica);
