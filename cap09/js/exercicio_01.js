@@ -24,6 +24,12 @@ function ordemAlfabetica() {
     }
 }
 
+frm.inLimpar.addEventListener("click", () => {
+    if(confirm("confirma a Exclusão de todas as Compras?")) {
+        localStorage.removeItem('produtos');
+        ordemAlfabetica();
+    }
+});
 
 frm.addEventListener('submit', (e) => {
     e.preventDefault();
