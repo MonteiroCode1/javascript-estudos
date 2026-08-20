@@ -27,6 +27,7 @@ function ordemAlfabetica() {
 frm.inLimpar.addEventListener("click", () => {
     if(confirm("confirma a Exclusão de todas as Compras?")) {
         localStorage.removeItem('produtos');
+        location.reload();
         ordemAlfabetica();
     }
 });
