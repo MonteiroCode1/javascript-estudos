@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercicio_02</title>
 </head>
-<body>
-    
+<body style="background-color: rgb(255, 255, 255);">
+    <h1>Herbie Controle de Serviços</h1>
+    <form>
+        <p><label for="inService">Serviço - Veiculo:</label>
+        <input type="text" id="inService" required autofocus></p>
+        <p><input type="submit" value="Adicionar serviço">
+        <input type="button" value="Executar Serviço" id="inExecutar"></p>
+    </form>
+    <h2 id="inPendentes"></h2>
+    <pre id="execucao"></pre>
 </body>
 <script src="../js/exercicio_02.js"></script>
 </html>
