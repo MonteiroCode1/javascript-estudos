@@ -41,3 +41,45 @@ frm.btSelecionar.addEventListener("click", () => {
     tarefas[aux + 1].className = "tarefa-selecionada"; //muda o estilo da propria linha.
 });
 
+frm.btRetirar.addEventListener("click", () => {
+    const tarefas = document.querySelectorAll("h5");
+
+    let aux = -1;
+
+    tarefas.forEach((tarefa, i) => {
+        if (tarefa.className == "tarefa-selecionada") {
+            aux = i;
+        }
+    });
+
+    if (aux == -1) {
+        alert("Selecione uma tarefa para removela!...");
+        return;
+    }
+
+    if (confirm(`Deseja excluir a tarefa ${tarefas[aux].innerText}?...`)) {
+        dvQuadro.removeChild(tarefas[aux]);
+    }
+});
+
+frm.btGravar.addEventListener("click", () => {
+    const tarefas = document.querySelectorAll("h5");
+
+    if (tarefas.length == 0) {
+        alert("Não há nenhuma tarefa para ser Salva!...");
+        return;
+    }
+
+    let dados = ``;
+
+    tarefas.forEach(tarefa => {
+        dados += tarefa.innerText + ";";
+    });
+
+    localStorage.setItem("tarefasDia", dados.slice(0, -1)); // remove o ultemo delimitador
+
+    if (localStorage.getItem("tarefasDia")) {
+        alert("Ok! Tarefas Salvas!");
+    }
+});
+
