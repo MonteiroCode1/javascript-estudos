@@ -83,3 +83,20 @@ frm.btGravar.addEventListener("click", () => {
     }
 });
 
+
+// pegar os dados e exibi os dados quando atualiza.
+window.addEventListener("load", () => {
+    if (localStorage.getItem("tarefasDia")) {
+        // transforma os dados em vetor
+        const dados = localStorage.getItem("tarefasDia").split(";");
+
+        //precorre os dados e inject em cada h5
+        dados.forEach(dado => {
+            const h5 = document.createElement("h5");
+            const texto = document.createTextNode(dado);
+            h5.appendChild(texto);
+            dvQuadro.appendChild(h5);
+        })
+    }
+})
+
