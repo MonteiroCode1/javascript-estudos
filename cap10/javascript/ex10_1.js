@@ -84,7 +84,7 @@ frm.btGravar.addEventListener("click", () => {
 });
 
 
-// pegar os dados e exibi os dados quando atualiza.
+// pegar os dados e exibi os dados quando atualiza ou quando entra.
 window.addEventListener("load", () => {
     if (localStorage.getItem("tarefasDia")) {
         // transforma os dados em vetor
