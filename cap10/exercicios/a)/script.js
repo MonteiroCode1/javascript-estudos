@@ -1,5 +1,5 @@
 const frm = document.querySelector("form");
-
+const div = document.querySelector("body");
 
 const imagens = {
     0: 'numero0.png',
@@ -22,9 +22,16 @@ function exibirVelas(idade) {
         frm.inIdade.focus();
         return;
     }
-
-    for (const ida of idade) {
-        
+    
+    for (let i = 0; i < idade.length; i++) {
+        const img = document.createElement("img");
+        for (const e of Object.keys(imagens)) {
+            if (idade[i] == e) {
+                img.src = `image/${imagens[e]}`;
+                img.alt = "numeros";
+                div.appendChild(img);
+            }
+        }
     }
 }
 
