@@ -16,7 +16,7 @@ const imagens = {
 
 function exibirVelas(idade) {
     const inteiro = Number(idade);
-    if (!Number.isInteger(inteiro) || inteiro > 120) {
+    if (!Number.isInteger(inteiro) || inteiro > 120 || inteiro < 0) {
         alert("Digite Numeros inteiros de 0 a 120!");
         frm.reset();
         frm.inIdade.focus();
@@ -35,10 +35,18 @@ function exibirVelas(idade) {
     }
 }
 
+frm.inNovas.addEventListener("click", function() {
+    location.reload();
+})
+
 frm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const idade = frm.inIdade.value;
 
-    exibirVelas(idade);
+    if (div.querySelectorAll("img").length == 0) {
+        exibirVelas(idade);
+    } else {
+        alert("Clique em Novas Velas para Proseguir!");
+    }
 })
