@@ -1,17 +1,4 @@
 
-/*
-const cores = {
-    0: 'red',
-    1: 'blue',
-    2: 'black',
-    3: 'white',
-    4: 'yellow',
-    5: 'pink',
-    6: 'gray',
-    7: 'lightgreen'
-};
-*/
-
 body {
     background-color: blanchedalmond;
 }
@@ -21,36 +8,4 @@ h3 {
     background-color: cadetblue;
     display: inline;
     padding: 10px;
-}
-
-.red {
-    color: red;
-}
-
-.blue {
-    color: blue;
-}
-
-.black {
-    color: black;
-}
-
-.white {
-    color: white;
-}
-
-.yellow {
-    color: yellow;
-}
-
-.pink {
-    color: pink;
-}
-
-.gray {
-    color: gray;
-}
-
-.lightgreen {
-    color: lightgreen;
 }

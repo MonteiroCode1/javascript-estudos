@@ -1,16 +1,16 @@
 const frm = document.querySelector("form");
 const body = document.querySelector("body");
 
-const cores = {
-    0: 'red',
-    1: 'blue',
-    2: 'black',
-    3: 'white',
-    4: 'yellow',
-    5: 'pink',
-    6: 'gray',
-    7: 'lightgreen'
-};
+const cores = [
+    'red',
+    'blue',
+    'black',
+    'white',
+    'yellow',
+    'pink',
+    'gray',
+    'lightgreen'
+];
 
 function nomeColorido(nome) {
     const h3 = body.querySelectorAll("h3");
@@ -27,13 +27,13 @@ function nomeColorido(nome) {
         const h3 = document.createElement("h3");
         const texto = document.createTextNode(e);
         h3.appendChild(texto);
-        const inde = Math.floor(Math.random() * Object.keys(cores).length);
-        h3.className = cores[inde];
+        const inde = Math.floor(Math.random() * cores.length);
+        h3.style.color = cores[inde];
         body.appendChild(h3);
     }
 
     frm.reset();
-    frm.inNome.focus();
+    frm.inNome.focus()
 }
 
 frm.addEventListener("submit", function(e) {
