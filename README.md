@@ -14,6 +14,7 @@ Repositório dos meus estudos e exercícios de **JavaScript**, baseado no livro 
 * `cap08` — Funções e Eventos
 * `cap09` — Persistência de dados com `localStorage`
 * `cap10` — Inserção de elementos HTML via JavaScript
+* `cap11` — É Muito Bom Programar... Programe!
 
 ## 🎯 Objetivo
 
