@@ -1,0 +1,70 @@
+
+body {
+    margin: 0px;
+}
+
+header {
+    max-width: 700px;
+    background-image: linear-gradient(to right, #163359 50%, #22528D);
+    color: white;
+    text-align: center;
+    margin: 0px auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 25px 1px rgb(141, 141, 141);
+}
+
+main {
+    max-width: 700px;
+    padding: 10px;
+    margin: 15px auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 25px 1px rgb(141, 141, 141);
+}
+
+main h2 {
+    margin: 0px;
+}
+
+main > form > p > input {
+    margin: 5px;
+    font-weight: bold;
+    color: white;
+    background-color: #3267AA;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1px 2px 6px rgb(120, 118, 118);
+}
+
+main > form > p > input:hover {
+    box-shadow: none;
+}
+
+main input.inClube {
+    background-color: white;
+    border: 2px solid #3267AA;
+    color: black;
+}
+
+main input.newClube {
+    background-color: #D9AA52;
+    color: black;
+    width: 25%;
+}
+
+body div.container {
+    margin: 0px auto;
+    max-width: 650px;
+}
+
+body div.container h5 {
+    display: inline-block;
+    width: 100px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 6px rgb(120, 118, 118);
+
+}
+

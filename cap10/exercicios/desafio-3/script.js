@@ -1,5 +1,5 @@
 const frm = document.querySelector("form");
-const main = document.querySelector("main");
+const main = document.querySelector("#inTimes");
 const table = document.querySelector("table");
 
 function adicionar(clube) {

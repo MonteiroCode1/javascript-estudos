@@ -12,15 +12,17 @@
     </header>
     <main>
         <form>
+            <h2>Administração de Clubes</h2>
             <p><label for="inClube">Clube:</label></p>
-            <p><input type="text" id="inClube" required autofocus></p>
             <p>
-                <input type="submit" value="Adicionar" id="inAdd">
+                <input type="text" id="inClube" class="inClube" required autofocus>
+                <input type="submit" value="+ Adicionar" id="inAdd">
                 <input type="button"  id="inTabela" value="Mostrar Tabela de Jogos">
-                <input type="button" id="newClubes" value="Novos Clubes">
+                <input type="button" id="newClubes" value="Novos Clubes" class="newClube">
             </p>
         </form>
     </main>
+    <div id="inTimes" class="container"></div>
     <table>
         <caption>Tabela de Jogos</caption>
     </table>
