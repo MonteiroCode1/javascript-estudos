@@ -10,8 +10,8 @@ header {
     text-align: center;
     margin: 0px auto;
     padding: 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 25px 1px rgb(141, 141, 141);
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 1px 2px 6px rgb(120, 118, 118);
 }
 
 main {
@@ -19,7 +19,7 @@ main {
     padding: 10px;
     margin: 15px auto;
     border-radius: 10px;
-    box-shadow: 1px 1px 25px 1px rgb(141, 141, 141);
+    box-shadow: 1px 2px 6px rgb(120, 118, 118);
 }
 
 main h2 {
@@ -50,7 +50,6 @@ main input.inClube {
 main input.newClube {
     background-color: #D9AA52;
     color: black;
-    width: 25%;
 }
 
 body div.container {
@@ -67,4 +66,34 @@ body div.container h5 {
     box-shadow: 1px 2px 6px rgb(120, 118, 118);
 
 }
+
+body .inDiv {
+    overflow-x: auto;
+    margin: 20px auto;
+    padding: 10px;
+    max-width: 700px;
+    box-shadow: 1px 2px 6px rgb(120, 118, 118);
+    border-radius: 10px;
+}
+
+body .inDiv table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 650px;
+}
+
+body .inDiv table caption {
+    padding: 10px;
+    background-color: #22528D;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px 10px 0px 0px;
+}
+
+body .inDiv table tr  td{
+    padding: 5px;
+    text-align: center;
+    border: 1px solid black;
+}
+
 
