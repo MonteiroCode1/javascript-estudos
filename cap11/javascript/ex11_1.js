@@ -2,6 +2,11 @@ const frm = document.querySelector("form");
 const respList = document.querySelector("pre");
 const respCavalo = document.querySelector("#outCavalo");
 
+function obterCavalo(num) {
+    const posição = num - 1;
+    return CAVALOS[posição];
+}
+
 // nome dos cavalos Participantes do pareo
 const CAVALOS = [
     'Marujo',
