@@ -7,6 +7,21 @@ function obterCavalo(num) {
     return CAVALOS[posição];
 }
 
+function validarCavalo(num) {
+    return num >= 1 && num <= CAVALOS.length;
+}
+
+function contarApostas(num) {
+    let contador = 0;
+    for (const aposta of apostas) {
+        if (aposta.cavalo == num) {
+            contador += 1;
+        }
+    }
+
+    return contador;
+}
+
 // nome dos cavalos Participantes do pareo
 const CAVALOS = [
     'Marujo',
@@ -19,6 +34,29 @@ const CAVALOS = [
 
 // vetor que ira armazena
 const apostas = [];
+
+frm.inCavalo.addEventListener("blur", function() {
+    if (frm.inCavalo.value == "") {
+        respCavalo.innerText = "";
+        return;
+    }
+
+    const numCavalo = Number(frm.inCavalo.value);
+
+    if (!validarCavalo(numCavalo)) {
+        alert("N° de Cavalo Invalido");
+        frm.inCavalo.focus();
+        return;
+    }
+
+    const nome = obterCavalo(numCavalo);
+    const contaNum = contarApostas(numCavalo);
+    const total = totalizarApostas(numCavalo);
+
+    // exibe nome, N° de apostas e total apostado no cavalo
+
+    respCavalo.innerText = `${nome} (apostas: ${contaNum} - R$: ${total.toFixed(2)})`;
+})
 
 frm.addEventListener("submit", function(e) {
     e.preventDefault();
