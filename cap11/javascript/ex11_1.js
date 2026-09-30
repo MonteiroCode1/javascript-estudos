@@ -5,11 +5,11 @@ const respCavalo = document.querySelector("#outCavalo");
 function obterCavalo(num) {
     const posição = num - 1;
     return CAVALOS[posição];
-}
+};
 
 function validarCavalo(num) {
     return num >= 1 && num <= CAVALOS.length;
-}
+};
 
 function contarApostas(num) {
     let contador = 0;
@@ -20,7 +20,17 @@ function contarApostas(num) {
     }
 
     return contador;
-}
+};
+
+function totalizadorApostas(num) {
+    let total = 0;
+    for (const aposta of apostas) {
+        if(aposta.cavalo == num) {
+            total += aposta.valor;
+        }
+    }
+    return total;
+};
 
 // nome dos cavalos Participantes do pareo
 const CAVALOS = [
