@@ -22,7 +22,7 @@ function contarApostas(num) {
     return contador;
 };
 
-function totalizadorApostas(num) {
+function totalizarApostas(num) {
     let total = 0;
     for (const aposta of apostas) {
         if(aposta.cavalo == num) {
@@ -41,6 +41,11 @@ const CAVALOS = [
     'jade',
     'luck'
 ];
+
+frm.inCavalo.addEventListener("focus", function() {
+    frm.inCavalo.value = "";
+    respCavalo.innerText = "";
+});
 
 // vetor que ira armazena
 const apostas = [];
@@ -67,6 +72,24 @@ frm.inCavalo.addEventListener("blur", function() {
 
     respCavalo.innerText = `${nome} (apostas: ${contaNum} - R$: ${total.toFixed(2)})`;
 })
+
+frm.btResumo.addEventListener("click", function() {
+    // vetor com valores zerados pata cada cavalo
+    const somaApostas = [0, 0, 0, 0, 0, 0];
+
+    for (const aposta of apostas) {
+        somaApostas[aposta.cavalo - 1] += aposta.valor;
+    }
+
+    // exibe o resultado no final
+    let resposta = `N° Cavalo ............... R$\n${"-".repeat(35)}\n`;
+    CAVALOS.forEach(function(cavalo, i) {
+        resposta += `${i + 1} ${cavalo.padEnd(20)}`;
+        resposta += `${somaApostas[i].toFixed(2).padStart(11)}\n`;
+    })
+
+    respList.innerText = resposta;
+});
 
 frm.addEventListener("submit", function(e) {
     e.preventDefault();
