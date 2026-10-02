@@ -42,6 +42,35 @@ const CAVALOS = [
     'luck'
 ];
 
+frm.btGanhador.addEventListener("click", function() {
+    // solicitar o numero do cavalo
+    const ganhador = Number(prompt("N° Cavalo Ganhador: "));
+
+    // validano a entrada de dados
+
+    if (isNaN(ganhador) || !validarCavalo(ganhador)) {
+        alert("Cavalo Invalido!");
+        return;
+    }
+
+    //uso do metodo reduce para somar as apostas
+    const total = apostas.reduce((acumulador, aposta) => acumulador + aposta.valor, 0);
+
+    let resumo = `Resultado Final do Pareo\n${'-'.repeat(30)}\n`;
+
+    resumo += `N° Total de Apostas: ${apostas.length}\n`;
+    resumo += `Total Geral R$ ${total.toFixed(2)}\n\n`;
+    resumo += `Ganhador N° ${ganhador} - ${obterCavalo(ganhador)}\n\n`;
+    resumo += `N° de apostas: ${contarApostas(ganhador)}\n`;
+    resumo += `Total Apostado R$: ${totalizarApostas(ganhador).toFixed(2)}`;
+    
+    respList.innerText = resumo;
+
+    frm.btApostar.disabled = true;
+    frm.btGanhador.disabled = true;
+    frm.btNovo.focus();
+});
+
 frm.inCavalo.addEventListener("focus", function() {
     frm.inCavalo.value = "";
     respCavalo.innerText = "";
