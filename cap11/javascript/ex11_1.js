@@ -141,5 +141,7 @@ frm.addEventListener("submit", function(e) {
     respList.innerText = lista;
 
     frm.reset();
-    frm.inCavalos.focus();
+    frm.inCavalo.focus();
 })
+
+frm.btNovo.addEventListener("click", () => window.location.reload());
