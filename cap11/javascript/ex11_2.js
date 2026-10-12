@@ -19,8 +19,8 @@ window.addEventListener("load", () => {
 
     // se a posição consta em ocupadas, exibe a imagem ocupada, senão, disponível
     imgStatus.src = ocupadas.includes(i.toString())
-      ? "img/ocupada.jpg"
-      : "img/disponivel.jpg";
+      ? "../img/ocupada.png"
+      : "../img/disponivel.png";
 
     imgStatus.className = "poltrona"; // classe com dimensão da img
     const figureCap = document.createElement("figcaption"); // cria figcaption
@@ -42,4 +42,65 @@ window.addEventListener("load", () => {
     // se i módulo 24 == 0: o comando após && será executado (insere quebra de linha)
     (i % 24 == 0) && dvPalco.appendChild(document.createElement("br"));
   }
+});
+
+frm.addEventListener("submit", (e) => {
+    e.preventDefault(); // evita envio do form
+
+    const poltrona = Number(frm.inPoltrona.value); // obtém conteúdo de inPoltrona
+
+    // valida o preenchimento do campo de entrada... não pode ser maior que a const
+    if (poltrona > POLTRONAS) {
+        alert("Informe um número de poltrona válido");
+        frm.inPoltrona.focus();
+        return;
+    }
+
+    const ocupadas = localStorage.getItem("teatroOcupadas")
+        ? localStorage.getItem("teatroOcupadas").split(";")
+        : [];
+
+    // se poltrona escolhida já está ocupada (existe em localStorage)
+    if (ocupadas.includes(poltrona.toString())) {
+        alert(`Poltrona ${poltrona} já está ocupada...`);
+        frm.inPoltrona.value = "";
+        frm.inPoltrona.focus();
+        return;
+    }
+
+    // captura imagem da poltrona, filha de dvPalco. É -1 pois começa em 0
+    const imgPoltrona = dvPalco.querySelectorAll("img")[poltrona - 1];
+
+    imgPoltrona.src = "../img/reservada.png"; // modifica atributo da imagem
+
+    reservadas.push(poltrona); // adiciona poltrona ao vetor reservadas
+
+    frm.inPoltrona.value = ""; // limpa campo
+    frm.inPoltrona.focus(); // jogo o foco em inPoltrona
+});
+
+frm.btConfirmar.addEventListener("click", () => {
+    if (reservadas.length == 0) {
+        alert("Não há poltronas reservadas");
+        frm.inPoltrona.focus();
+        return;
+    }
+
+    const ocupadas = localStorage.getItem("teatroOcupadas")
+        ? localStorage.getItem("teatroOcupadas").split(";")
+        : [];
+
+    // for decrescente, pois as reservas vão sendo removidas a cada alteração da imagem
+    for (let i = reservadas.length - 1; i >= 0; i--) {
+        ocupadas.push(reservadas[i]);
+
+        // captura imagem da poltrona, filha de dvPalco. É -1 pois começa em 0
+        const imgPoltrona = dvPalco.querySelectorAll("img")[reservadas[i] - 1];
+
+        imgPoltrona.src = "../img/ocupada.png"; // modifica atributo da imagem
+
+        reservadas.pop(); // remove do vetor a reserva já alterada
+    }
+
+    localStorage.setItem("teatroOcupadas", ocupadas.join(";"));
 });
