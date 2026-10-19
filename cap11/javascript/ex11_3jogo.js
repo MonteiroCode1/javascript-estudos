@@ -9,6 +9,29 @@ const imgStatus = document.querySelector("img");
 let palavraSorteada; // declara variáveis globais
 let dicaSorteada;
 
+const verificarFim = () => {
+    const chances = Number(respChances.innerText); // obtém número de chances
+
+    if (chances == 0) {
+        respMensagemFinal.className = "display-3 text-danger";
+        respMensagemFinal.innerText = `Ah... é ${palavraSorteada}. Você Perdeu!`;
+        concluirJogo();
+    } else if (respPalavra.innerText == palavraSorteada) {
+        respMensagemFinal.className = "display-3 text-primary";
+        respMensagemFinal.innerText = "Parabéns!! Você Ganhou.";
+        trocarStatus(4); // exibe a figura do "rostinho feliz"
+        concluirJogo();
+    }
+}
+
+// modifica o texto da dica e desabilita os botões de jogar
+const concluirJogo = () => {
+    respDica.innerText = "* Clique no botão 'Iniciar Jogo' para jogar novamente";
+    frm.inLetra.disabled = true;
+    frm.btJogar.disabled = true;
+    frm.btVerDica.disabled = true;
+}
+
 window.addEventListener("load", () => {
   // se não há palavras cadastradas
   if (!localStorage.getItem("jogoPalavra")) {
@@ -64,4 +87,48 @@ frm.btVerDica.addEventListener("click", () => {
   verificarFim(); // verifica se atingiu limite de chances
 
   frm.inLetra.focus(); // joga o foco em inLetra
+});
+
+frm.addEventListener("submit", e => {
+    e.preventDefault(); // evita envio do form
+
+    const letra = frm.inLetra.value.toUpperCase(); // obtém o conteúdo do campo inLetra
+
+    let erros = respErros.innerText; // obtém o conteúdo dos elementos da página
+    let palavra = respPalavra.innerText;
+
+    // verifica se a letra apostada já consta em erros ou na palavra
+    if (erros.includes(letra) || palavra.includes(letra)) {
+        alert("Você já apostou esta letra");
+        frm.inLetra.focus();
+        return;
+    }
+
+    // se letra consta em palavraSorteada
+    if (palavraSorteada.includes(letra)) {
+        let novaPalavra = ""; // para compor novaPalavra
+
+        // for para montar palavra a ser exibida
+        for (let i = 0; i < palavraSorteada.length; i++) {
+            // se igual a letra apostada, acrescenta esta letra na exibição
+            if (palavraSorteada.charAt(i) == letra) {
+                novaPalavra += letra;
+            } else {
+                novaPalavra += palavra.charAt(i); // senão, acrescenta letra ou "_" existente
+            }
+        }
+
+        respPalavra.innerText = novaPalavra; // exibe a novaPalavra
+    } else {
+        respErros.innerText += letra; // acrescenta letra aos erros
+        const chances = Number(respChances.innerText) - 1; // diminui nº de chances
+        respChances.innerText = chances; // exibe novo nº de chances
+
+        trocarStatus(chances); // troca imagem
+    }
+
+    verificarFim(); // verifica se já ganhou ou perdeu
+
+    frm.inLetra.value = "";
+    frm.inLetra.focus();
 });
