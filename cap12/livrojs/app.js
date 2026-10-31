@@ -2,6 +2,16 @@ const express = require('express');
 const app = express();
 const port = 3001;
 
+// exemplo de middleware
+function log(req, res, next) {
+    console.log(`.............. Acessado em ${new Date()}`);
+    next();
+}
+
+app.get('/transfere', log, function(req, res) {
+    res.send("OK, Valor Transferido com sucesso...");
+});
+
 app.get('/', (request, response) => {
     response.send('Olá... Bem Vindo!');
 });
