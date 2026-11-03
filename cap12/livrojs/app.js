@@ -7,6 +7,9 @@ function log(req, res, next) {
     console.log(`.............. Acessado em ${new Date()}`);
     next();
 }
+const livros = require('./livros');
+
+app.use('/livros', livros); // indentificação da tota e da const
 
 app.get('/transfere', log, function(req, res) {
     res.send("OK, Valor Transferido com sucesso...");
