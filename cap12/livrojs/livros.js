@@ -1,6 +1,7 @@
 const express = require("express");  // pacotes a serem utilizados
 const router = express.Router();
-
+const cors = require("cors");
+router.use(cors());
 const dbKnex = require("./data/db_config");  // dados de conexão com o banco de dados
 
 // método get é usado para consulta
@@ -60,5 +61,46 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
+// Filtro por titulo ou autor
+router.get("/filtro/:palavra", async (req, res) => {
+    const palavra = req.params.palavra; // palavra do título ou autor a pesquisar
+    try {
+        // para filtrar registros, utiliza-se .where(), com suas variantes
+        const livros = await dbKnex("livros")
+            .where("titulo", "like", `%${palavra}%`)
+            .orWhere("autor", "like", `%${palavra}%`);
+        res.status(200).json(livros); // retorna statusCode ok e os dados
+    } catch (error) {
+        res.status(400).json({ msg: error.message }); // retorna status de erro e msg
+    }
+});
+
+// Resumo do cadastro de livros
+router.get("/dados/resumo", async (req, res) => {
+    try {
+        // métodos que podem ser utilizados para obter dados estatísticos da tabela
+        const consulta = await dbKnex("livros")
+            .count({ num: "*" })
+            .sum({ soma: "preco" })
+            .max({ maior: "preco" })
+            .avg({ media: "preco" });
+        const { num, soma, maior, media } = consulta[0];
+        res.status(200).json({ num, soma, maior, media: Number(media.toFixed(2)) });
+    } catch (error) {
+        res.status(400).json({ msg: error.message }); // retorna status de erro e msg
+    }
+});
+
+// Soma dos preços, agrupados por ano
+router.get("/dados/grafico", async (req, res) => {
+    try {
+        // obtém ano e soma do preço dos livros (com o nome total), agrupados por ano
+        const totalPorAno = await dbKnex("livros").select("ano")
+            .sum({ total: "preco" }).groupBy("ano");
+        res.status(200).json(totalPorAno);
+    } catch (error) {
+        res.status(400).json({ msg: error.message }); // retorna status de erro e msg
+    }
+});
 // Exporta o router apenas uma vez no final do arquivo
 module.exports = router;
